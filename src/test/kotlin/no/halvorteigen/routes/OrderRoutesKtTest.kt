@@ -8,6 +8,7 @@ import no.halvorteigen.models.OrderItem
 import no.halvorteigen.models.orderStorage
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class OrderRoutesKtTests {
 
@@ -52,4 +53,8 @@ class OrderRoutesKtTests {
         orderStorage.clear()
     }
 
+    @org.junit.Test
+    fun shouldFailTest() {
+        assertTrue(false)
+    }
 }
