@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Execute Gradle build
+        run: ./gradlew build
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Execute Gradle test
+        run: ./gradlew test
